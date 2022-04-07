@@ -1,0 +1,24 @@
+name: Create Release
+
+on: [push, pull_request]
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Code Checkout
+      uses: actions/checkout@v2
+    - name: Release Information
+      run: |
+          export VERSION_NAME='1.0.0'
+          echo "::set-env name=VERSION_NAME::$VERSION_NAME"
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.VERSION_NAME }}
+        release_name: v${{ env.VERSION_NAME }}
+        artifacts: "*.py"
+        token: ${{ secrets.GITHUB_TOKEN }}
+        draft: false
+        prerelease: false

@@ -16,9 +16,9 @@ jobs:
       env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ env.VERSION_NAME }}
-        release_name: v${{ env.VERSION_NAME }}
-        artifacts: "*.py"
+        tag_name: "1.0.0"
+        release_name: "v1.0.0"
+        artifacts: "*.md"
         token: ${{ secrets.GITHUB_TOKEN }}
         draft: false
         prerelease: false

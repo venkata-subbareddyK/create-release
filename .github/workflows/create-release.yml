@@ -10,7 +10,7 @@ jobs:
     - name: Release Information
       run: |
           export VERSION_NAME='1.0.0'
-          echo "::set-env name=VERSION_NAME::$VERSION_NAME"
+          run: echo "VERSION_NAME=1.0.0" >> $GITHUB_ENV
     - name: Create Release
       uses: actions/create-release@v1
       env:

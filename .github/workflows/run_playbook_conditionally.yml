@@ -1,0 +1,17 @@
+name: Run Playbook Conditionally
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Run_Playbook:
+    name: Run_Playbook
+    if: github.triggering_actor == github.repository_admin
+    runs-on: ubuntu-latest
+    steps:
+    - name: Code Checkout
+      uses: actions/checkout@v4
+    - name: Check for Repo contents
+      shell: bash
+      run: |
+        pwd && ls -ltra

@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  Run_Playbook:
-    name: Run_Playbook
+  Run_Playbook_Conditionally:
+    name: Run_Playbook_Conditionally
     if: github.triggering_actor == github.repository_owner
     runs-on: ubuntu-latest
     steps:
@@ -15,3 +15,10 @@ jobs:
       shell: bash
       run: |
         pwd && ls -ltra
+    - name: Check for Repo Context Vars and its Values
+      shell: bash
+      run: |
+        pwd && ls -ltra
+        echo ${{ github.actor }}
+        echo ${{ github.triggering_actor }}
+        echo ${{ github.repository_owner }}

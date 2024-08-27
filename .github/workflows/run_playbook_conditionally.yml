@@ -6,7 +6,7 @@ on:
 jobs:
   Run_Playbook:
     name: Run_Playbook
-    if: github.triggering_actor == github.repository_admin
+    if: github.triggering_actor == github.repository_owner
     runs-on: ubuntu-latest
     steps:
     - name: Code Checkout

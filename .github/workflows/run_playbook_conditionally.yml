@@ -1,7 +1,8 @@
 name: Run Playbook Conditionally
 
-on:
-  workflow_dispatch:
+on: [push, workflow_dispatch]
+  #workflow_dispatch:
+  
 
 jobs:
   Run_Playbook_Conditionally:
@@ -19,6 +20,8 @@ jobs:
       shell: bash
       run: |
         pwd && ls -ltra
-        echo ${{ github.actor }}
-        echo ${{ github.triggering_actor }}
-        echo ${{ github.repository_owner }}
+        echo "User ID:${{ github.actor }}"
+        echo "User ID who triggered this workflow:${{ github.triggering_actor }}"
+        echo "Repo owner User ID:${{ github.repository_owner }}"
+        echo "The Name of the pusher: ${{ github.event.pusher.name }}"
+        echo "The Email of the pusher: ${{ github.event.pusher.email }}"

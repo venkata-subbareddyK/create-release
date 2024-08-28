@@ -24,5 +24,7 @@ jobs:
         echo "User ID who triggered this workflow:${{ github.triggering_actor }}"
         echo "Repo owner user ID:${{ github.repository_owner }}"
         echo "Repo owner email ID:${{ github.repository_owner.email }}"
+        echo "Repo admin user ID:${{ github.repository_admin }}"
+        echo "Repo admin:${{ github.admin }}"
         echo "The Name of the pusher: ${{ github.event.pusher.name }}"
         echo "The Email of the pusher: ${{ github.event.pusher.email }}"

@@ -21,7 +21,7 @@ jobs:
       id: file_content
     - name: Print Output
       run: |
-        msg: "Output {{file_content.stdout_lines}}"
+        echo: "Output {{file_content.stdout_lines}}"
     - name: Check for Repo Context Vars and its Values
       shell: bash
       run: |

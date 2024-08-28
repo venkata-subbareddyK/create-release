@@ -22,6 +22,7 @@ jobs:
         pwd && ls -ltra
         echo "User ID:${{ github.actor }}"
         echo "User ID who triggered this workflow:${{ github.triggering_actor }}"
-        echo "Repo owner User ID:${{ github.repository_owner }}"
+        echo "Repo owner user ID:${{ github.repository_owner }}"
+        echo "Repo owner email ID:${{ github.repository_owner.email }}"
         echo "The Name of the pusher: ${{ github.event.pusher.name }}"
         echo "The Email of the pusher: ${{ github.event.pusher.email }}"

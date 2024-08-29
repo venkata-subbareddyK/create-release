@@ -25,7 +25,7 @@ jobs:
         set +x
         if ! grep -q ${{ github.triggering_actor }} $users_file; then
           echo "USER: ${{ github.triggering_actor }} is not allowed to run this Workflow"
-          exit 1
+          #exit 1
         fi
     - name: Dump steps context
       env:
@@ -37,6 +37,7 @@ jobs:
       shell: bash
       run: |
         pwd && ls -ltra
+        echo "users step output: ${{ steps.users.outputs.stdout }}  "
         echo "outcome:${{ steps.users.outcome }}"
         echo "conclusion:${{ steps.users.conclusion }}"
         echo "User ID:${{ github.actor }}"

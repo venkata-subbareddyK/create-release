@@ -18,7 +18,7 @@ jobs:
         pwd && ls -ltra
     - name: Users file Content Check
       run: |
-        content=$(cat users)
+        content='cat users'
     - name: Print Output
       run: |
         echo "Output: $content"

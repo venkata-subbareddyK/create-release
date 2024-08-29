@@ -23,9 +23,9 @@ jobs:
       shell: bash
       run: |
         set +x
-        content=$(<$users_file)
+        content=$(<${{ env.users_file }})
         echo "Output: $content"
-        if ! grep -q ${{ github.triggering_actor }} $users_file; then
+        if ! grep -q ${{ github.triggering_actor }} ${{ env.users_file }}; then
           echo "USER: ${{ github.triggering_actor }} is not allowed to run this Workflow"
           #exit 1
         fi

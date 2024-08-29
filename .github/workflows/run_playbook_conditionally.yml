@@ -4,8 +4,8 @@ on: [push, workflow_dispatch]
   #workflow_dispatch:
 
 env:
-  #users_file: '.github/owners'
-  users_file: '.github/CODEOWNERS'
+  users_file: '.github/owners'
+  #users_file: '.github/CODEOWNERS'
 
 jobs:
   Run_Playbook_Conditionally:
@@ -27,7 +27,7 @@ jobs:
         content=$(<${{ env.users_file }})
         echo "Output: $content"
         if ! grep -q ${{ github.triggering_actor }} ${{ env.users_file }}; then
-          echo "USER: ${{ github.triggering_actor }} is not allowed to run this Workflow"
+          echo "!! WARNING !!: ${{ github.triggering_actor }} user is not allowed to run this Workflow\n Please contact satg-tpe-devsecops@intel.com"
           #exit 1
         fi
     - name: Dump steps context

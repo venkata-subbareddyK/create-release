@@ -19,8 +19,8 @@ jobs:
     - name: Users file Content Check
       shell: bash
       run: |
-        content=cat users
-        echo "Output: $content"        
+        content=$(<users)
+        echo $content    
     - name: Check for Repo Context Vars and its Values
       shell: bash
       run: |

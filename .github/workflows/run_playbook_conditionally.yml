@@ -2,7 +2,9 @@ name: Run Playbook Conditionally
 
 on: [push, workflow_dispatch]
   #workflow_dispatch:
-  
+
+env:
+  users_file: 'users'
 
 jobs:
   Run_Playbook_Conditionally:
@@ -17,12 +19,17 @@ jobs:
       run: |
         pwd && ls -ltra
     - name: Users file Content Check
+      id: users
       shell: bash
       run: |
         content=$(<users)
         echo "Output: $content"
+        if grep -q venkata-subbareddyK "$users_file"; then
+          exit 0
+        fi
     - name: Check for Repo Context Vars and its Values
-      if: contains ($content, github.triggering_actor)
+      #if: contains ($content, github.triggering_actor)
+      if: ${{ steps.users.conclusion == 'success' }}
       shell: bash
       run: |
         pwd && ls -ltra

@@ -22,7 +22,7 @@ jobs:
       id: users
       shell: bash
       run: |
-        set -fx
+        set +x
         if ! grep -q ${{ github.triggering_actor }} $users_file; then
           echo "USER: ${{ github.triggering_actor }} is not allowed to run this Workflow"
           exit 1

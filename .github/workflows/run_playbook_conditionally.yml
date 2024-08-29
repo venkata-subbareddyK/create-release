@@ -23,16 +23,16 @@ jobs:
       shell: bash
       run: |
         if grep -q 'no-user' $users_file; then
-          exit 0
+          exit 1
         fi
-        echo "outcome:${{ steps.users.outcome }}"
-        echo "conclusion:${{ steps.users.conclusion }}"
     - name: Check for Repo Context Vars and its Values
       #if: contains ($content, github.triggering_actor)
       if: ${{ steps.users.outcome == 'success' }}
       shell: bash
       run: |
         pwd && ls -ltra
+        echo "outcome:${{ steps.users.outcome }}"
+        echo "conclusion:${{ steps.users.conclusion }}"
         echo "User ID:${{ github.actor }}"
         echo "User ID who triggered this workflow:${{ github.triggering_actor }}"
         echo "Repo owner user ID:${{ github.repository_owner }}"

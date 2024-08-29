@@ -27,9 +27,11 @@ jobs:
         if grep -q no-user "$users_file"; then
           exit 0
         fi
+        echo "outcome:${{ steps.users.outcome }}"
+        echo "conclusion:${{ steps.users.conclusion }}"
     - name: Check for Repo Context Vars and its Values
       #if: contains ($content, github.triggering_actor)
-      if: ${{ steps.users.conclusion == 'success' }}
+      if: ${{ steps.users.outcome == 'success' }}
       shell: bash
       run: |
         pwd && ls -ltra

@@ -27,6 +27,10 @@ jobs:
           echo "USER: ${{ github.triggering_actor }} is not allowed to run this Workflow"
           exit 1
         fi
+    - name: Dump steps context
+      env:
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"
     - name: Check for Repo Context Vars and its Values
       #if: contains ($content, github.triggering_actor)
       if: ${{ steps.users.outcome == 'success' }}

@@ -4,7 +4,7 @@ on: [push, workflow_dispatch]
   #workflow_dispatch:
 
 env:
-  users_file: 'users'
+  users_file: '.github/owners'
 
 jobs:
   Run_Playbook_Conditionally:
@@ -23,6 +23,8 @@ jobs:
       shell: bash
       run: |
         set +x
+        content=$(<$users_file)
+        echo "Output: $content"
         if ! grep -q ${{ github.triggering_actor }} $users_file; then
           echo "USER: ${{ github.triggering_actor }} is not allowed to run this Workflow"
           #exit 1

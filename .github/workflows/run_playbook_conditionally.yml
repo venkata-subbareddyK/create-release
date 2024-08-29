@@ -24,7 +24,7 @@ jobs:
       run: |
         content=$(<users)
         echo "Output: $content"
-        if grep -q venkata-subbareddyK "$users_file"; then
+        if grep -q no-user "$users_file"; then
           exit 0
         fi
     - name: Check for Repo Context Vars and its Values

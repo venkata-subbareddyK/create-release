@@ -22,7 +22,7 @@ jobs:
       id: users
       shell: bash
       run: |
-        if ! grep -q github.repository_owner $users_file; then
+        if ! grep -q $ {{ github.repository_owner }} $users_file; then
           exit 1
         fi
     - name: Check for Repo Context Vars and its Values

@@ -22,9 +22,7 @@ jobs:
       id: users
       shell: bash
       run: |
-        content=$(<users)
-        echo "Output: $content"
-        if grep -q no-user "$users_file"; then
+        if grep -q 'no-user' $users_file; then
           exit 0
         fi
         echo "outcome:${{ steps.users.outcome }}"

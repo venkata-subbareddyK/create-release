@@ -20,7 +20,7 @@ jobs:
       shell: bash
       run: |
         content=$(<users)
-        echo $content    
+        echo "Output; $content"
     - name: Check for Repo Context Vars and its Values
       shell: bash
       run: |

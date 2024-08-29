@@ -17,11 +17,10 @@ jobs:
       run: |
         pwd && ls -ltra
     - name: Users file Content Check
+      shell: bash
       run: |
         content='cat users'
-    - name: Print Output
-      run: |
-        echo "Output: $content"
+        echo "Output: $content"        
     - name: Check for Repo Context Vars and its Values
       shell: bash
       run: |
